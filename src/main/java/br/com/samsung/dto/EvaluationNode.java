@@ -50,10 +50,6 @@ public class EvaluationNode extends SamsungEvaluationDto {
 
 			for (EvaluationQuotation itemQuot : evaluationQuotation) {
 
-				double usd;
-				double pen;
-				double brl;
-
 				if (item.getDocumentDate().equals(itemQuot.getDataHoraCotacao())) {
 
 					if (item.getCurrencyCode().equals("USD")) {
@@ -68,10 +64,7 @@ public class EvaluationNode extends SamsungEvaluationDto {
 
 					if (item.getCurrencyCode().equals("BRL")) {
 
-						// evaluationFrontItem.setValueBrl("0.00");
 						evaluationFrontItem.setValueBrl(String.valueOf(item.getDocumentValue()));
-//					brl = Double.parseDouble(item.getDocumentValue())*Double.parseDouble(itemQuot.getCotacao());
-//					evaluationFrontItem.setValueBrl(String.valueOf(brl));
 					}
 				}
 			}
