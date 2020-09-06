@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import br.com.samsung.dto.EvaluationNode;
+import br.com.samsung.dto.EvaluationNodeDto;
 import br.com.samsung.model.EvaluationFront;
 
 @RestController
@@ -22,7 +22,7 @@ public class SamsungEvaluationController {
 	@GetMapping
 	public List<EvaluationFront> evaluation() throws JsonMappingException, JsonProcessingException {
 
-		List<EvaluationFront> evlCurrency = new EvaluationNode().evlFront();
+		List<EvaluationFront> evlCurrency = new EvaluationNodeDto().evlFront();
 
 		return evlCurrency;
 	}

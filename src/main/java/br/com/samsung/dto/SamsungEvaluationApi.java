@@ -13,7 +13,7 @@ import br.com.samsung.model.EvaluationCurrency;
 import br.com.samsung.model.EvaluationDocs;
 import br.com.samsung.model.EvaluationQuotation;
 
-public class SamsungEvaluationDto {
+public class SamsungEvaluationApi {
 
 	private String endPoint = "https://cellolatam.cellologistics.com.br/sds-devs-evaluation/evaluation";
 	

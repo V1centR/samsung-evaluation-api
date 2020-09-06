@@ -11,7 +11,7 @@ import br.com.samsung.model.EvaluationDocs;
 import br.com.samsung.model.EvaluationFront;
 import br.com.samsung.model.EvaluationQuotation;
 
-public class EvaluationNode extends SamsungEvaluationDto {
+public class EvaluationNodeDto extends SamsungEvaluationApi {
 
 	public List<EvaluationFront> evlFront() throws JsonMappingException, JsonProcessingException {
 
@@ -54,17 +54,38 @@ public class EvaluationNode extends SamsungEvaluationDto {
 
 					if (item.getCurrencyCode().equals("USD")) {
 
+						Double calcPen = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "PEN")
+								* Double.parseDouble(item.getDocumentValue());
+						Double calcBrl = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "BRL")
+								* Double.parseDouble(item.getDocumentValue());
+
 						evaluationFrontItem.setValueUsd(String.valueOf(item.getDocumentValue()));
+						evaluationFrontItem.setValuePen(strValue(calcPen));
+						evaluationFrontItem.setValueBrl(strValue(calcBrl));
 					}
 
 					if (item.getCurrencyCode().equals("PEN")) {
 
+						Double calcUsd = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "USD")
+								* Double.parseDouble(item.getDocumentValue());
+						Double calcBrl = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "BRL")
+								* Double.parseDouble(item.getDocumentValue());
+
 						evaluationFrontItem.setValuePen(String.valueOf(item.getDocumentValue()));
+						evaluationFrontItem.setValueUsd(strValue(calcUsd));
+						evaluationFrontItem.setValueBrl(strValue(calcBrl));
 					}
 
 					if (item.getCurrencyCode().equals("BRL")) {
 
+						Double calcUsd = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "USD")
+								* Double.parseDouble(item.getDocumentValue());
+						Double calcPen = convertQuote(itemQuot.getDataHoraCotacao(), item.getCurrencyCode(), "PEN")
+								* Double.parseDouble(item.getDocumentValue());
+
 						evaluationFrontItem.setValueBrl(String.valueOf(item.getDocumentValue()));
+						evaluationFrontItem.setValuePen(strValue(calcPen));
+						evaluationFrontItem.setValueUsd(strValue(calcUsd));
 					}
 				}
 			}
@@ -73,15 +94,47 @@ public class EvaluationNode extends SamsungEvaluationDto {
 
 		} // Close FOR
 
+		// System.out.println("Quotation" + convertQuote("2020-01-01", "BRL","USD"));
+		convertQuote("2020-01-01", "BRL", "USD");
+
 		return listFrontEvaluates;
 	}
 
-	private String converQuote(String currencyCode, String value, String dateQuotation)
+	// This function get quotation by date and return value
+	private Double convertQuote(String dateQuotation, String currencyCodeFrom, String currencyCodeTo)
 			throws JsonMappingException, JsonProcessingException {
 
 		List<EvaluationQuotation> evaluationQuotation = super.evlQuot();
+		String quotation = null;
 
-		return null;
+		for (EvaluationQuotation evlQuote : evaluationQuotation) {
+
+			if (evlQuote.getDataHoraCotacao().equals(dateQuotation)) {
+
+				if (evlQuote.getDataHoraCotacao().equals(dateQuotation)
+						&& evlQuote.getFromCurrencyCode().equals(currencyCodeFrom)
+						&& evlQuote.getToCurrencyCode().equals(currencyCodeTo)) {
+
+					// Set quotation available in date
+					quotation = evlQuote.getCotacao();
+
+					System.out.println("Convert OK " + evlQuote.getCotacao());
+
+				} else {
+
+					System.out.println("No convert available on this date!!");
+				}
+
+			}
+
+		}
+
+		return Double.parseDouble(quotation);
+	}
+
+	private String strValue(Double value) {
+
+		return String.format("%.2f", value);
 	}
 
 }
