@@ -1,23 +1,11 @@
 package br.com.samsung.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
 public class EvaluationQuotation {
-
-	/*
-	 * 
-		 "fromCurrencyCode": "USD",
-	     "toCurrencyCode": "PEN",
-	     "cotacao": "3.52",
-	     "dataHoraCotacao": "2020-01-01"
-	 * 
-	 */
 	
 	private String fromCurrencyCode;
 	private String toCurrencyCode;

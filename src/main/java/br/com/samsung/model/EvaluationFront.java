@@ -1,24 +1,11 @@
 package br.com.samsung.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
 public class EvaluationFront {
-	
-	/* Document Number
-	 * Document Date
-	 * Currency Code
-	 * Currency Desc
-	 * Document Value
-	 * Value USD
-	 * Value PEN
-	 * Value BRL
-*/
 	
 	private String docNumber;
 	private String docDate;

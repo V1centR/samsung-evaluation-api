@@ -117,12 +117,6 @@ public class EvaluationNodeDto extends SamsungEvaluationApi {
 
 					// Set quotation available in date
 					quotation = evlQuote.getCotacao();
-
-					System.out.println("Convert OK " + evlQuote.getCotacao());
-
-				} else {
-
-					System.out.println("No convert available on this date!!");
 				}
 
 			}
