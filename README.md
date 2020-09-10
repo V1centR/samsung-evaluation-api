@@ -27,6 +27,6 @@ API currrency quotations:  SpringBoot 2.3.3 + Docker
         "valueBrl": "292.80"
     }, ...
 ```
-###### RESPONSE: HTTP.STATUS 200 CREATED
+###### RESPONSE: HTTP.STATUS 200 OK
 
 ===================================================
