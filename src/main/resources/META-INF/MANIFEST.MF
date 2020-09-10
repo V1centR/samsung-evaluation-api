@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Built-By: VicentCarvalho
+Start-Class: br.com.samsung.SamsumgTestApiApplication
+Main-Class: org.springframework.boot.loader.JarLauncher
