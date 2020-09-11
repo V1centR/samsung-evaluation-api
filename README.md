@@ -2,7 +2,7 @@
 
 API currrency quotations:  SpringBoot 2.3.3 + Docker
 
-##### Endpoint: GET http://ec2-18-191-177-236.us-east-2.compute.amazonaws.com/api/evaluation
+##### Endpoint: GET http://ec2-3-137-40-117.us-east-2.compute.amazonaws.com/api/evaluation
 
 ```sh
 [
