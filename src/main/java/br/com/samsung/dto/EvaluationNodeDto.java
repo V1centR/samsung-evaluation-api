@@ -21,7 +21,7 @@ public class EvaluationNodeDto extends SamsungEvaluationApi {
 		List<EvaluationQuotation> evaluationQuotation = super.evlQuot();
 
 		// Containing data from objects
-		List<EvaluationFront> evaluationFront;
+		//List<EvaluationFront> evaluationFront;
 
 		// for to construct objects
 		ArrayList<EvaluationFront> listFrontEvaluates = new ArrayList<EvaluationFront>();
@@ -94,7 +94,6 @@ public class EvaluationNodeDto extends SamsungEvaluationApi {
 
 		} // Close FOR
 
-		// System.out.println("Quotation" + convertQuote("2020-01-01", "BRL","USD"));
 		convertQuote("2020-01-01", "BRL", "USD");
 
 		return listFrontEvaluates;
@@ -118,9 +117,7 @@ public class EvaluationNodeDto extends SamsungEvaluationApi {
 					// Set quotation available in date
 					quotation = evlQuote.getCotacao();
 				}
-
 			}
-
 		}
 
 		return Double.parseDouble(quotation);

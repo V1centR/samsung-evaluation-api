@@ -9,16 +9,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.samsung.component.AppComponent;
 import br.com.samsung.model.EvaluationCurrency;
 import br.com.samsung.model.EvaluationDocs;
 import br.com.samsung.model.EvaluationQuotation;
 
-public class SamsungEvaluationApi {
 
-	private String endPoint = "https://cellolatam.cellologistics.com.br/sds-devs-evaluation/evaluation";
+public class SamsungEvaluationApi {
+	
+	public String endPoint = AppComponent.ENDPOINT;
 	
 	public List<EvaluationDocs> evlDocs() throws JsonMappingException, JsonProcessingException {
-
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -27,13 +29,11 @@ public class SamsungEvaluationApi {
 		List<EvaluationDocs> evlDocs = objectMapper.readValue(result, new TypeReference<List<EvaluationDocs>>() {
 		});
 
-		//System.out.println("DATA API Received::: " + evlDocs.toString());
-
 		return evlDocs;
 	}
 	
 	public List<EvaluationCurrency> evlCurrency() throws JsonMappingException, JsonProcessingException {
-
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -42,13 +42,11 @@ public class SamsungEvaluationApi {
 		List<EvaluationCurrency> evlCurrency = objectMapper.readValue(result, new TypeReference<List<EvaluationCurrency>>() {
 		});
 
-		//System.out.println("DATA API::: " + evlCurrency.toString());
-
 		return evlCurrency;
 	}
 	
 	public List<EvaluationQuotation> evlQuot() throws JsonMappingException, JsonProcessingException {
-
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -56,8 +54,6 @@ public class SamsungEvaluationApi {
 
 		List<EvaluationQuotation> evlQuotation = objectMapper.readValue(result, new TypeReference<List<EvaluationQuotation>>() {
 		});
-
-		//System.out.println("DATA API::: " + evlQuotation.toString());
 
 		return evlQuotation;
 	}
